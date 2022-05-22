@@ -21,9 +21,11 @@ export interface SpeechRecognition {
     abort: () => Promise<void>;
     continuous: boolean;
     interimResults: boolean;
+    lang?: string;
     onend: SpeechEndCallback;
     onerror: SpeechErrorCallback;
     onresult: SpeechRecognitionEventCallback;
+    onstart: SpeechStartCallback;
     start: () => Promise<void>;
     stop: () => Promise<void>;
 }

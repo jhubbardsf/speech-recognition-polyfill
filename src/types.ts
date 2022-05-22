@@ -12,7 +12,6 @@ export interface SpeechRecognitionAlternative {
    */
   confidence: number
 }
-
 /**
  * Object containing a transcript for the ongoing utterance and an indicator of whether that transcript is final or not
  * @public
@@ -31,7 +30,6 @@ export interface SpeechRecognitionResult {
    */
   isFinal: boolean
 }
-
 /**
  * Data associated with an update to the transcript for the ongoing utterance
  * @public
@@ -49,7 +47,6 @@ export interface SpeechRecognitionEvent {
    */
   resultIndex: number
 }
-
 /**
  * Data associated with an error emitted from the recognition service
  * @public
@@ -64,50 +61,37 @@ export interface SpeechRecognitionErrorEvent {
    */
   message: string
 }
-
 /**
  * Error emitted when the user does not give permission to use the microphone
  * @public
  */
-export const MicrophoneNotAllowedError: SpeechRecognitionErrorEvent = {
-  error: 'not-allowed',
-  message: 'User did not give permission to use the microphone',
-}
-
+export declare const MicrophoneNotAllowedError: SpeechRecognitionErrorEvent
 /**
  * Generic error when speech recognition fails due to an unknown cause
  * @public
  */
-export const SpeechRecognitionFailedError: SpeechRecognitionErrorEvent = {
-  error: 'audio-capture',
-  message: 'Speech recognition failed',
-}
-
+export declare const SpeechRecognitionFailedError: SpeechRecognitionErrorEvent
 /**
  * Callback that is invoked whenever the transcript gets updated
  * @param speechRecognitionEvent - Event containing updates to the transcript
  * @public
  */
-export type SpeechRecognitionEventCallback = (speechRecognitionEvent: SpeechRecognitionEvent) => void
-
+export declare type SpeechRecognitionEventCallback = (speechRecognitionEvent: SpeechRecognitionEvent) => void
 /**
  * Callback that is invoked when transcription ends
  * @public
  */
-export type SpeechEndCallback = () => void
-
+export declare type SpeechEndCallback = () => void
 /**
  * Callback that is invoked when transcription starts
  * @public
  */
-export type SpeechStartCallback = () => void
-
+export declare type SpeechStartCallback = () => void
 /**
  * Callback that is invoked when an error occurs
  * @public
  */
-export type SpeechErrorCallback = (speechRecognitionErrorEvent: SpeechRecognitionErrorEvent) => void
-
+export declare type SpeechErrorCallback = (speechRecognitionErrorEvent: SpeechRecognitionErrorEvent) => void
 /**
  * Subset of the {@link https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition | W3C SpeechRecognition spec} that
  * can be used for basic transcription
@@ -154,8 +138,12 @@ export interface SpeechRecognition {
    * Stop transcribing utterances received from the microphone, and cut off the current utterance
    */
   abort: () => Promise<void>
-}
 
+  /**
+   * The language for SpeechRecognition
+   */
+  lang?: string
+}
 /**
  * Class that implements the SpeechRecognition interface
  * @public
