@@ -133,6 +133,11 @@ export interface SpeechRecognition {
    */
   onend: SpeechEndCallback
   /**
+   * Callback that is invoked when transcription starts
+   * @param speechRecognitionEvent - Event containing updates to the transcript
+   */
+  onstart: SpeechStartCallback
+  /**
    * Callback that is invoked when an error occurs
    * @param speechRecognitionErrorEvent - Event containing details of the error
    */
