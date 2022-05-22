@@ -97,6 +97,12 @@ export type SpeechRecognitionEventCallback = (speechRecognitionEvent: SpeechReco
 export type SpeechEndCallback = () => void
 
 /**
+ * Callback that is invoked when transcription starts
+ * @public
+ */
+export type SpeechStartCallback = () => void
+
+/**
  * Callback that is invoked when an error occurs
  * @public
  */

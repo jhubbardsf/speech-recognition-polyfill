@@ -8,6 +8,7 @@ import {
   SpeechRecognition,
   MicrophoneNotAllowedError,
   SpeechRecognitionFailedError,
+  SpeechStartCallback,
 } from './types'
 
 /**
@@ -36,6 +37,7 @@ export const createSpeechlySpeechRecognition = (appId: string): SpeechRecognitio
     interimResults = false
     onresult: SpeechRecognitionEventCallback = () => {}
     onend: SpeechEndCallback = () => {}
+    onstart: SpeechStartCallback = () => {}
     onerror: SpeechErrorCallback = () => {}
 
     constructor() {
@@ -49,6 +51,7 @@ export const createSpeechlySpeechRecognition = (appId: string): SpeechRecognitio
         await this.initialise()
         await this.client.startContext()
         this.transcribing = true
+        this.onstart()
       } catch (e) {
         if (e === ErrNoAudioConsent) {
           this.onerror(MicrophoneNotAllowedError)
